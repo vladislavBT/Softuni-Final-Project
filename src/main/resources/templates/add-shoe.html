@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+
+    <div class="wrapper">
+        <header th:replace="fragments/header"></header>
+
+        <div style="background-color: #eee;">
+            <form>
+                <p class="h1 mb-4 d-flex justify-content-center">Add original shoe</p>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="d-flex justify-content-center">
+                    <div class="row" style="width: 36%;">
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example1" class="form-control" />
+                                <label class="form-label" for="form6Example1">Name</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        invalid name!
+                    </span>
+                </div>
+
+                <!-- Select fabric -->
+                <div class="d-flex justify-content-center">
+                    <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
+                        style="width: 34%;">
+                        <option selected>Select fabric</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        Unselected fabric!
+                    </span>
+                </div>
+
+                <!-- Select category -->
+                <div class="d-flex justify-content-center">
+                    <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
+                        style="width: 34%;">
+                        <option selected>Select category</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        Unselected category!
+                    </span>
+                </div>
+
+                <!-- Select brand -->
+                <div class="d-flex justify-content-center">
+                    <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
+                        style="width: 34%;">
+                        <option selected>Select brand</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        Unselected brand!
+                    </span>
+                </div>
+
+
+
+
+                <!-- Choose file -->
+                <div class="d-flex justify-content-center">
+                    <div class="form-group mt-4" style="width: 34%;">
+                        <label>Choose shoe image:</label>
+                        <span class="btn btn-primary btn-file">
+                            Upload <input type="file">
+                        </span>
+
+                    </div>
+                </div>
+
+
+                <!-- Submit button -->
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Add shoe</button>
+                </div>
+            </form>
+        </div>
+
+        <footer th:replace="fragments/footer"></footer>
+    </div>
+</body>
+
+</html>

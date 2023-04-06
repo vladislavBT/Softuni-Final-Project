@@ -1,0 +1,39 @@
+.container-fade {
+    position: relative;
+    width: 50%;
+ }
+
+ .container-fade-all {
+    position: relative;
+    width: 100%;
+ }
+
+ .image-fade {
+    display:block;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transition: .5s ease;
+  }
+
+  .overlay-box-fade {
+    position: absolute;     
+  
+    /*the below code brings your overlay to center*/
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)      
+  }
+
+  .container-fade:hover .image-fade {
+    opacity: 0.5;
+ }
+
+ .container-fade-all:hover .image-fade {
+    opacity: 0.5;
+ }
+.container-fade:hover .overlay-box-fade
+{
+  opacity: 1;
+ }

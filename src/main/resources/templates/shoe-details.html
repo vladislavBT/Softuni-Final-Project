@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+    <div class="wrapper">
+        <!-- Navigation -->
+        <header th:replace="fragments/header"></header>
+
+        <section style="background-color: #eee;">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col">
+
+                        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-2 mx-5">
+
+                            <li class="breadcrumb mb-0 breadcrumb-item active" aria-current="page">Shoe details</li>
+
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="row mt-5 mx-5">
+
+
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            <p class="mb-1"><span class="font-italic me-1">Shoe image</span></p>
+
+                            <a href="#"><img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                    style="height: 250px; width: 320px;" class="rounded mx-auto d-block mb-3"
+                                    alt="..."></a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="card-body mt-5 mx-5">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Name</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">Air-force</p>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Brand</p>
+                        </div>
+                        <div class="col">
+                            <p class="text-muted mb-0">Nike</p>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary me-2">Details</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Category</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">Sport</p>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Fabric</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">Nylon</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </section>
+        <footer th:replace="fragments/footer"></footer>
+    </div>
+</body>
+
+</html>

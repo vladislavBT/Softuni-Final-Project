@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="fragments/head"></head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header th:replace="fragments/header"></header>
+
+        <div style="background-color: #eee;">
+            <form>
+                <p class="h1 mb-4 d-flex justify-content-center">Add brand</p>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="d-flex justify-content-center">
+                    <div class="row" style="width: 36%;">
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example1" class="form-control" />
+                                <label class="form-label" for="form6Example1">Name</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        invalid name!
+                    </span>
+                </div>
+
+                <!-- Message input -->
+                <div class="d-flex justify-content-center">
+                    <div class="form-outline mb-4" style="width: 34%;">
+                        <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+                        <label class="form-label" for="form6Example7">Additional information</label>
+                    </div>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        Inlcude description!
+                    </span>
+                </div>
+                <!-- Choose file -->
+                <div class="d-flex justify-content-center">
+                    <div class="form-group mt-4" style="width: 34%;">
+                        <label>Choose brand logo:</label>
+                        <span class="btn btn-primary btn-file">
+                            Upload <input type="file">
+                        </span>
+
+                    </div>
+                </div>
+
+
+                <!-- Submit button -->
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Add brand</button>
+                </div>
+            </form>
+        </div>
+
+        <footer th:replace="fragments/footer"></footer>
+    </div>
+</body>
+
+</html>
