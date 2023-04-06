@@ -11,7 +11,7 @@ public class HomeController extends BaseController{
 
     @GetMapping
     public ModelAndView getHome() {
-        return super.view("log-in");
+        return super.view("add-offer.html");
     }
 
 }

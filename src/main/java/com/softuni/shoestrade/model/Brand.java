@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.awt.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,5 +24,8 @@ public class Brand {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
+
+    @Column(nullable = false)
+    private String imageUrl;
 
 }

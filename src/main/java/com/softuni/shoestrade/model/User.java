@@ -1,6 +1,7 @@
 package com.softuni.shoestrade.model;
 
 
+import com.softuni.shoestrade.model.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,8 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
+    @Column(name = "money")
+    private double money;
     @Basic
     private int age;
 
@@ -40,6 +43,10 @@ public class User {
 
     @ManyToOne
     private Role role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Gender gender;
 
     @OneToMany
     private List<Comment> comments;

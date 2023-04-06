@@ -1,6 +1,9 @@
 package com.softuni.shoestrade.model;
 
+import com.softuni.shoestrade.model.enums.Gender;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,14 @@ public class Offer {
     @Column(nullable = false)
     private String title;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Gender gender;
+
+    @Min(value = 36)
+    @Max(value = 47)
+    private double size;
+
     @OneToOne
     private Shoe shoe;
 
@@ -36,6 +47,8 @@ public class Offer {
     @Column(nullable = false)
     private String description;
 
+    @ManyToOne
+    private User seller;
     @OneToMany
     private List<Comment> comments;
 

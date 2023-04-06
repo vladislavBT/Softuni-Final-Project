@@ -1,126 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-      <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta
-                id="csrf"
-                type="hidden"
-                th:name="${_csrf.headerName}"
-                th:value="${_csrf.token}" />
-        <title>shoestrade</title>
-      <!--  <link rel="stylesheet" href="/css/bootstrap.min.css"/>-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-      
-        <script src="/js/jquery-3.5.1.slim.min.js"></script>
-        <link href="/static/css/shoestrade.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-      </head>
+
+<head th:replace="fragments/head"></head>
+
 <body>
 
-<div class="wrapper">
-  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <div class="col-md-3 mb-2 mb-md-0">
-      <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-        <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-    </div>
-  
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-      <li><a href="#" class="nav-link px-2"></a></li>
-      <li><a href="#" class="nav-link px-2">Pricing</a></li>
-      <li><a href="#" class="nav-link px-2">FAQs</a></li>
-      <li><a href="#" class="nav-link px-2">About</a></li>
-    </ul>
-  
-    <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2">Login</button>
-      <button type="button" class="btn btn-primary">Sign-up</button>
-    </div>
-  </header>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"
-          alt="Hollywood Sign on The Hill" />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" class="card-img-top"
-          alt="Palm Springs Road" />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a longer card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" class="card-img-top"
-          alt="Los Angeles Skyscrapers" />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-            additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-      <div class="card">
-        
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
-          alt="Skyscrapers"
-          />
-          
-          
-        
-            <div class="container">
-                <div class="row">
-                    
-            <div class="d-flex justify-content-start">
-            <p class="text-dark text-decoration-none ">jefsjf</p>
+    <div class="wrapper">
+
+        <header th:replace="fragments/header"></header>
+
+        <div style="background-color: #eee;">
+            <div class="d-flex align-content-between flex-wrap">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+                            <div class="card">
+                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
+                                    alt="Skyscrapers" />
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+                            <div class="card">
+                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
+                                    alt="Skyscrapers" />
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+                            <div class="card">
+                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
+                                    alt="Skyscrapers" />
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+
+                            <div class="card">
+                                <div class="bg-image hover-zoom">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        class="card-img-top" alt="Skyscrapers" />
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center d-flex justify-content-between">
+                                <p class="text-dark text-decoration-none">nike air force</p>
+                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex justify-content-end">
-            <p class="text-dark text-decoration-none ">jefsjf</p>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
-        
-    </div>
-        </div>
-      </div>
-
-    </a>
-    
     </div>
 
-  </div>
-  
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-  <div class="col-md-4 d-flex align-items-center">
-    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-      <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-    </a>
-    <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Company, Inc</span>
-  </div>
-
-  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-  </ul>
-</footer>
-</div>
+    <footer th:replace="fragments/footer"></footer>
+    </div>
 </body>
+
 </html>
