@@ -8,7 +8,12 @@
     <div class="wrapper">
 
         <header th:replace="fragments/header"></header>
-
+        <form
+                class="registration-form"
+                th:action="@{/brand/add}"
+                th:method="post"
+                th:object="${brandCreateDTO}"
+                enctype="multipart/form-data">
         <div style="background-color: #eee;">
             <form>
                 <p class="h1 mb-4 d-flex justify-content-center">Add brand</p>
@@ -17,7 +22,8 @@
                     <div class="row" style="width: 36%;">
                         <div class="col">
                             <div class="form-outline">
-                                <input type="text" id="form6Example1" class="form-control" />
+                                <input type="text" id="form6Example1" class="form-control" name="name"
+                                       th:field="*{name}" />
                                 <label class="form-label" for="form6Example1">Name</label>
                             </div>
                         </div>
@@ -25,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('name')}" id="passwordHelpInline" class="form-text text-danger">
                         invalid name!
                     </span>
                 </div>
@@ -33,24 +39,33 @@
                 <!-- Message input -->
                 <div class="d-flex justify-content-center">
                     <div class="form-outline mb-4" style="width: 34%;">
-                        <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+                        <textarea class="form-control" id="form6Example7" rows="4" name="description"
+                                  th:field="*{description}"></textarea>
                         <label class="form-label" for="form6Example7">Additional information</label>
                     </div>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
-                        Inlcude description!
+                    <span th:if="${#fields.hasErrors('description')}" id="passwordHelpInline" class="form-text text-danger">
+                        Include description!
                     </span>
                 </div>
                 <!-- Choose file -->
                 <div class="d-flex justify-content-center">
                     <div class="form-group mt-4" style="width: 34%;">
                         <label>Choose brand logo:</label>
-                        <span class="btn btn-primary btn-file">
-                            Upload <input type="file">
+                        <span class="btn btn-primary">
+                            Upload <input type="file" name="image"
+                                          required
+                                          id="image"
+                                          class="form-control-file"
+                                          aria-describedby="image" th:field="*{image}">
                         </span>
-
                     </div>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span th:if="${#fields.hasErrors('image')}" id="passwordHelpInline" class="form-text text-danger">
+                         Not inserted image!
+                    </span>
                 </div>
 
 

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -39,18 +40,28 @@ public class User {
     private int age;
 
     @Column(nullable = false)
-    private String info;
+    private String description;
 
-    @ManyToOne
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Gender gender;
 
     @OneToMany
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     @OneToMany
-    private List<Offer> offers;
+    private List<Offer> offers = new ArrayList<>();
+
+    public UserEntity(String username, String password, String email, String fullName, int age, String description, Gender gender) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.fullName = fullName;
+        this.age = age;
+        this.description = description;
+        this.gender = gender;
+    }
 }

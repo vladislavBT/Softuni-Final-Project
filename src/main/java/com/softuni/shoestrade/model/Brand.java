@@ -28,4 +28,9 @@ public class Brand {
     @Column(nullable = false)
     private String imageUrl;
 
+    public Brand(String name, String description, String imageUrl) {
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+    }
 }

@@ -48,7 +48,7 @@ public class Offer {
     private String description;
 
     @ManyToOne
-    private User seller;
+    private UserEntity seller;
     @OneToMany
     private List<Comment> comments;
 

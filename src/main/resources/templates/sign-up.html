@@ -7,60 +7,71 @@
 
 <header th:replace="fragments/header"></header>
 
+<form
+        class="registration-form"
+        th:action="@{/users/signup}"
+        th:method="post"
+        th:object="${userRegistrationDTO}">
     <div style="background-color: #eee;">
         <div class="d-flex justify-content-center">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">Username</label>
+                    <label for="inputUsername" class="col-form-label">Username</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="inputPassword6" class="form-control"
-                        aria-labelledby="passwordHelpInline">
+                    <input type="text" id="inputUsername" class="form-control"
+                        aria-labelledby="passwordHelpInline" name="username"
+                           th:field="*{username}">
                 </div>
                 <div class="col-auto">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('username')}" id="usernameHelpInline" class="form-text text-danger">
                         Invalid username!
                     </span>
                 </div>
             </div>
         </div>
 
-        <span id="passwordHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
+        <span th:if="${#fields.hasErrors('username')}" id="usernameHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
             *Username must be 3-18 characters
         </span>
 
         <div class="d-flex justify-content-center my-2">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">Password</label>
+                    <label for="inputPassword" class="col-form-label">Password</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="inputPassword6" class="form-control"
-                        aria-labelledby="passwordHelpInline">
+                    <input type="password" id="inputPassword" class="form-control"
+                        aria-labelledby="passwordHelpInline"
+                           name="password"
+                           th:field="*{password}">
                 </div>
                 <div class="col-auto">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('password')}" id="passwordHelpInline" class="form-text text-danger">
                         Invalid password!
                     </span>
                 </div>
             </div>
         </div>
 
-        <span id="passwordHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
-            *Password must not be null
+        <span th:if="${#fields.hasErrors('password')}" id="passwordHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
+            *Password must not be null and must be 3-18 characters
         </span>
 
         <div class="d-flex justify-content-center my-2">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">Email</label>
+                    <label for="inputEmail" class="col-form-label">Email</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="inputPassword6" class="form-control"
-                        aria-labelledby="passwordHelpInline">
+                    <input type="email" id="inputEmail" class="form-control"
+                        aria-labelledby="emailHelpInline"
+                           name="email"
+                           th:field="*{email}"
+                    >
                 </div>
                 <div class="col-auto">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span  th:if="${#fields.hasErrors('email')}" id="emailHelpInline" class="form-text text-danger">
                         Invalid email!
                     </span>
 
@@ -68,53 +79,86 @@
             </div>
         </div>
 
-        <span id="passwordHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
+        <span th:if="${#fields.hasErrors('email')}" id="emailHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
             *Email must contain @
         </span>
 
         <div class="d-flex justify-content-center my-2">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">Full name</label>
+                    <label for="inputFullname" class="col-form-label">Full name</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="inputPassword6" class="form-control"
-                        aria-labelledby="passwordHelpInline">
+                    <input name="fullName"
+                           th:field="*{fullName}" type="text" id="inputFullname" class="form-control"
+                        aria-labelledby="FullnameHelpInline">
                 </div>
                 <div class="col-auto">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('fullName')}" id="FullnameHelpInline" class="form-text text-danger">
                         Invalid Full name!
                     </span>
                 </div>
             </div>
         </div>
 
-        <span id="passwordHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
-            *Full name isn't correct
+        <span th:if="${#fields.hasErrors('fullName')}" id="FullnameHelpInline" class="form-text text-danger d-flex justify-content-center my-2">
+            *Full name can't be null and must be between 3 and 26 characters
         </span>
 
         <div class="d-flex justify-content-center my-2">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">Age</label>
+                    <label for="inputAge" class="col-form-label">Age</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="inputPassword6" class="form-control"
-                        aria-labelledby="passwordHelpInline">
+                    <input name="age"
+                           th:field="*{age}" type="number" id="inputAge" class="form-control"
+                        aria-labelledby="ageHelpInline">
                 </div>
                 <div class="col-auto">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('age')}" id="ageHelpInline" class="form-text text-danger">
                         Invalid age!
                     </span>
                 </div>
             </div>
         </div>
 
+        <!-- Select gender -->
+        <div class="d-flex justify-content-center">
+            <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
+                    style="width: 34%;" id="gender" name="gender">
+                <option selected>Select gender</option>
+                <option value="MALE">male</option>
+                <option value="FEMALE">female</option>
+            </select>
+
+        </div>
+        <div th:if="${#fields.hasErrors('gender')}" class="col-auto d-flex justify-content-center">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        Unselected gender!
+                    </span>
+        </div>
+
+        <!-- Description input -->
+        <div class="d-flex justify-content-center">
+            <div class="form-outline my-4" style="width: 34%;" >
+                <label class="form-label" for="form6Example7">Description</label>
+
+                <textarea class="form-control" id="form6Example7" rows="4" name="description"></textarea>
+
+            </div>
+        </div>
+        <div class="col-auto d-flex justify-content-center" th:if="${#fields.hasErrors('description')}">
+                    <span id="passwordHelpInline" class="form-text text-danger">
+                        Inlcude description!
+                    </span>
+        </div>
+
         <div class="d-flex justify-content-center mt-4">
-            <button type="button" class="btn btn-primary btn-lg">Sign-up</button>
+            <button type="submit" class="btn btn-primary btn-lg">Sign-up</button>
         </div>
     </div>
-
+</form>
 
     </div>
     <footer th:replace="fragments/footer"></footer>
