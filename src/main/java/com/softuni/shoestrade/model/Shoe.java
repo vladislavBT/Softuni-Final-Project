@@ -3,16 +3,11 @@ package com.softuni.shoestrade.model;
 import com.softuni.shoestrade.model.enums.Category;
 import com.softuni.shoestrade.model.enums.Color;
 import com.softuni.shoestrade.model.enums.Fabric;
-import com.softuni.shoestrade.model.enums.Gender;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.awt.*;
 
 @Getter
 @Setter
@@ -45,5 +40,13 @@ public class Shoe {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Color color;
+
+    public Shoe(String name, Fabric fabric, Category category, Brand brand, Color color) {
+        this.name = name;
+        this.fabric = fabric;
+        this.category = category;
+        this.brand = brand;
+        this.color = color;
+    }
 
 }

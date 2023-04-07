@@ -52,7 +52,7 @@ public class UserEntity {
     @OneToMany
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(targetEntity = Offer.class, mappedBy = "seller",fetch = FetchType.EAGER)
     private List<Offer> offers = new ArrayList<>();
 
     public UserEntity(String username, String password, String email, String fullName, int age, String description, Gender gender) {

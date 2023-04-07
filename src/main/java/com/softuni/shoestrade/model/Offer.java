@@ -47,9 +47,19 @@ public class Offer {
     @Column(nullable = false)
     private String description;
 
+
+
     @ManyToOne
     private UserEntity seller;
     @OneToMany
     private List<Comment> comments;
 
+    public Offer(String title, Gender gender, double size, Shoe shoe, double price, String description) {
+        this.title = title;
+        this.gender = gender;
+        this.size = size;
+        this.shoe = shoe;
+        this.price = price;
+        this.description = description;
+    }
 }

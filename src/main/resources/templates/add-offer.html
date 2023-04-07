@@ -9,38 +9,45 @@
 
         <header th:replace="fragments/header"></header>
         <div style="background-color: #eee;">
-            <form>
+            <form
+                    class="registration-form"
+                    th:action="@{/offer/add}"
+                    th:method="post"
+                    th:object="${offerCreateDTO}"
+                    enctype="multipart/form-data">
                 <p class="h1 mb-4 d-flex justify-content-center">Add offer</p>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="d-flex justify-content-center">
                     <div class="row" style="width: 36%;">
                         <div class="col">
                             <div class="form-outline">
-                                <input type="text" id="form6Example1" class="form-control" />
                                 <label class="form-label" for="form6Example1">Title</label>
+                                <input type="text" id="form6Example1" class="form-control" name="title"
+                                       th:field="*{title}"/>
                             </div>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('title')}" id="passwordHelpInline" class="form-text text-danger">
                         invalid title!
                     </span>
                 </div>
                 <!-- Select shoe -->
                 <div class="d-flex justify-content-center">
                     <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
-                        style="width: 34%;">
-                        <option selected>Select shoe</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        style="width: 34%;" name="shoeId"
+                            th:field="*{shoeId}">
+                        <option value="-1" selected>Select shoe</option>
+                        <div th:each="shoe : ${shoes}">
+                            <option th:value="${shoe.id}" th:text="${shoe.name}" >
+                        </div>
                     </select>
 
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('shoeId')}" id="passwordHelpInline" class="form-text text-danger">
                         Unselected shoe!
                     </span>
                 </div>
@@ -48,12 +55,13 @@
                 <!-- Number input -->
                 <div class="d-flex justify-content-center">
                     <div class="form-outline mt-4" style="width: 34%;">
-                        <input type="number" id="form6Example6" class="form-control" />
                         <label class="form-label" for="form6Example6">Price</label>
+                        <input type="number" id="form6Example6" class="form-control" name="price"
+                               th:field="*{price}"/>
                     </div>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('price')}" id="passwordHelpInline" class="form-text text-danger">
                         Invalid price!
                     </span>
                 </div>
@@ -62,15 +70,15 @@
                 <!-- Select gender -->
                 <div class="d-flex justify-content-center">
                     <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
-                        style="width: 34%;">
-                        <option selected>Select gender</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        style="width: 34%;" name="gender"
+                            th:field="*{gender}">
+                        <option value="" selected>Select gender</option>
+                        <option th:each="type : ${T(com.softuni.shoestrade.model.enums.Gender).values()}"
+                                th:value="${type}" th:text="${type}">
                     </select>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('gender')}" id="passwordHelpInline" class="form-text text-danger">
                         Unselected gender!
                     </span>
                 </div>
@@ -78,12 +86,13 @@
                 <!-- Number input -->
                 <div class="d-flex justify-content-center">
                     <div class="form-outline mt-4" style="width: 34%;">
-                        <input type="number" id="form6Example6" class="form-control" />
-                        <label class="form-label" for="form6Example6">Size</label>
+                        <label class="form-label" for="form6Example6" >Size</label>
+                        <input type="number" id="form6Example6" class="form-control" name="size"
+                               th:field="*{size}"/>
                     </div>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('size')}" id="passwordHelpInline" class="form-text text-danger">
                         invalid size!
                     </span>
                 </div>
@@ -91,22 +100,35 @@
                 <!-- Message input -->
                 <div class="d-flex justify-content-center">
                     <div class="form-outline mt-4" style="width: 34%;">
-                        <textarea class="form-control" id="form6Example7" rows="4"></textarea>
                         <label class="form-label" for="form6Example7">Additional information</label>
+                        <textarea class="form-control" id="form6Example7" rows="4" name="description"
+                                  th:field="*{description}"></textarea>
                     </div>
                 </div>
-
+                <div class="col-auto d-flex justify-content-center">
+                    <span th:if="${#fields.hasErrors('description')}" id="passwordHelpInline" class="form-text text-danger">
+                        invalid size!
+                    </span>
+                </div>
                 <!-- Choose file -->
                 <div class="d-flex justify-content-center">
                     <div class="form-group mt-4" style="width: 34%;">
-                        <label for="exampleInputFile">Choose offer image:</label>
+                        <label>Choose offer image:</label>
                         <span class="btn btn-primary btn-file">
-                            Upload <input type="file">
+                            Upload <input type="file" name="image"
+                                          required
+                                          id="image"
+                                          class="form-control-file"
+                                          aria-describedby="image" th:field="*{image}">
                         </span>
 
                     </div>
                 </div>
-
+                <div class="col-auto d-flex justify-content-center">
+                    <span th:if="${#fields.hasErrors('image')}" id="passwordHelpInline" class="form-text text-danger">
+                        invalid size!
+                    </span>
+                </div>
 
                 <!-- Submit button -->
                 <div class="d-flex justify-content-center">

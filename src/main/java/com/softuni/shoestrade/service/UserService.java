@@ -2,7 +2,6 @@ package com.softuni.shoestrade.service;
 
 import com.softuni.shoestrade.model.Role;
 import com.softuni.shoestrade.model.UserEntity;
-import com.softuni.shoestrade.model.dto.RoleDTO;
 import com.softuni.shoestrade.model.dto.UserRegistrationDTO;
 import com.softuni.shoestrade.model.enums.UserRoles;
 import com.softuni.shoestrade.repository.RoleRepository;
@@ -58,5 +57,9 @@ public class UserService {
         userEntity.getRoles().add(role);
 
         this.userRepository.save(userEntity);
+    }
+
+    public Optional<UserEntity> getUserByName(String name) {
+        return this.userRepository.findByUsername(name);
     }
 }

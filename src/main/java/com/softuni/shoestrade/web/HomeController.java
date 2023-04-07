@@ -1,9 +1,15 @@
 package com.softuni.shoestrade.web;
 
+import com.softuni.shoestrade.model.Offer;
+import com.softuni.shoestrade.model.UserEntity;
 import com.softuni.shoestrade.model.dto.UserRegistrationDTO;
+import com.softuni.shoestrade.model.view.ProfileLoggedUser;
+import com.softuni.shoestrade.model.view.UserDetailsView;
 import com.softuni.shoestrade.service.UserService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,6 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -59,8 +70,29 @@ public class HomeController extends BaseController{
     }
 
     @GetMapping("users/profile")
-    public ModelAndView getProfile() {
-        return super.view("profile.html");
+    @Transactional
+    public ModelAndView getProfile(Principal principal, ModelAndView modelAndView) {
+        Optional<UserEntity> user = userService.getUserByName(principal.getName());
+
+        ProfileLoggedUser profileLoggedUser = new ProfileLoggedUser(user.get().getFullName(),user.get().getDescription());
+        UserDetailsView userDetailsView = new UserDetailsView(user.get().getUsername(), user.get().getEmail(),user.get().getFullName(), user.get().getMoney(), user.get().getDescription(),user.get().getAge(),user.get().getOffers(),user.get().getGender());
+
+        userDetailsView.setGithub(user.get().getUsername());
+        userDetailsView.setFacebook(user.get().getUsername());
+        userDetailsView.setTwitter(user.get().getUsername());
+
+        userDetailsView.setInstagram("@"+user.get().getUsername());
+        userDetailsView.setWebsite("https://"+user.get().getUsername()+".com");
+
+        List<Offer> myOffers = new ArrayList<>();
+        myOffers = user.get().getOffers();
+
+        modelAndView.addObject("loggedUser",profileLoggedUser);
+        modelAndView.addObject("userProperties",userDetailsView);
+        modelAndView.addObject("offers", myOffers);
+
+        modelAndView.setViewName("profile.html");
+       return modelAndView;
     }
 
 
@@ -81,5 +113,10 @@ public class HomeController extends BaseController{
         redirectAttributes.addFlashAttribute("bad_credentials", true);
 
         return "redirect:/users/login";
+    }
+
+    @ModelAttribute("loggedUser")
+    public ProfileLoggedUser initFormLogged() {
+        return new ProfileLoggedUser();
     }
 }

@@ -9,22 +9,29 @@
         <header th:replace="fragments/header"></header>
 
         <div style="background-color: #eee;">
-            <form>
+            <form
+                    class="registration-form"
+                    th:action="@{/shoe/add}"
+                    th:method="post"
+                    th:object="${shoeCreateDTO}"
+                    enctype="multipart/form-data">
                 <p class="h1 mb-4 d-flex justify-content-center">Add original shoe</p>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="d-flex justify-content-center">
                     <div class="row" style="width: 36%;">
                         <div class="col">
+                            <label class="form-label" for="form6Example1">Name</label>
                             <div class="form-outline">
-                                <input type="text" id="form6Example1" class="form-control" />
-                                <label class="form-label" for="form6Example1">Name</label>
+                                <input type="text" id="form6Example1" class="form-control"
+                                       name="name"
+                                       th:field="*{name}"/>
                             </div>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('name')}" id="passwordHelpInline" class="form-text text-danger">
                         invalid name!
                     </span>
                 </div>
@@ -32,16 +39,17 @@
                 <!-- Select fabric -->
                 <div class="d-flex justify-content-center">
                     <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
-                        style="width: 34%;">
-                        <option selected>Select fabric</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        style="width: 34%;" name="fabric"
+                            th:field="*{fabric}">
+                        <option value="" selected>Select fabric</option>
+                        <option th:each="type : ${T(com.softuni.shoestrade.model.enums.Fabric).values()}"
+                                th:value="${type}" th:text="${type}">
+                        </option>
                     </select>
 
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('fabric')}" id="passwordHelpInline" class="form-text text-danger">
                         Unselected fabric!
                     </span>
                 </div>
@@ -49,15 +57,15 @@
                 <!-- Select category -->
                 <div class="d-flex justify-content-center">
                     <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
-                        style="width: 34%;">
-                        <option selected>Select category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        style="width: 34%;" name="category"
+                            th:field="*{category}">
+                        <option value="" selected>Select category</option>
+                        <option th:each="type : ${T(com.softuni.shoestrade.model.enums.Category).values()}"
+                                th:value="${type}" th:text="${type}">
                     </select>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('category')}" id="passwordHelpInline" class="form-text text-danger">
                         Unselected category!
                     </span>
                 </div>
@@ -65,20 +73,36 @@
                 <!-- Select brand -->
                 <div class="d-flex justify-content-center">
                     <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
-                        style="width: 34%;">
-                        <option selected>Select brand</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        style="width: 34%;" name="brandId"
+                            th:field="*{brandId}">
+                        <option value="-1" selected>Select brand</option>
+                        <div th:each="brand : ${brands}">
+                            <option th:value="${brand.id}" th:text="${brand.name}" >
+                        </div>
+
                     </select>
                 </div>
                 <div class="col-auto d-flex justify-content-center">
-                    <span id="passwordHelpInline" class="form-text text-danger">
+                    <span th:if="${#fields.hasErrors('brandId')}" id="passwordHelpInline" class="form-text text-danger">
                         Unselected brand!
                     </span>
                 </div>
 
-
+                <!-- Select color -->
+                <div class="d-flex justify-content-center">
+                        <select class="form-select mt-4 d-flex justify-content-center" aria-label="Default select example"
+                                style="width: 34%;" name="color"
+                                th:field="*{color}">
+                            <option value="" selected>Select category</option>
+                            <option th:each="type : ${T(com.softuni.shoestrade.model.enums.Color).values()}"
+                                    th:value="${type}" th:text="${type}">
+                        </select>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <span th:if="${#fields.hasErrors('color')}" id="passwordHelpInline" class="form-text text-danger">
+                        Unselected brand!
+                    </span>
+                </div>
 
 
                 <!-- Choose file -->
@@ -86,12 +110,20 @@
                     <div class="form-group mt-4" style="width: 34%;">
                         <label>Choose shoe image:</label>
                         <span class="btn btn-primary btn-file">
-                            Upload <input type="file">
+                            Upload <input type="file" name="image"
+                                          required
+                                          id="image"
+                                          class="form-control-file"
+                                          aria-describedby="image" th:field="*{image}">
                         </span>
 
                     </div>
                 </div>
-
+                <div class="col-auto d-flex justify-content-center">
+                    <span th:if="${#fields.hasErrors('image')}" id="passwordHelpInline" class="form-text text-danger">
+                         Not inserted image!
+                    </span>
+                </div>
 
                 <!-- Submit button -->
                 <div class="d-flex justify-content-center">
