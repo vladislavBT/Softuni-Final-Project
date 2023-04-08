@@ -60,25 +60,23 @@
         <p class="h1 mb-4 mt-4 d-flex justify-content-center">Top search</p>
 
         <div class="row mt-5 ml-3 mr-3 mx-5">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <img class="card-img-top" src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+            <div th:object="${shoe1}" class="col-sm-6 mb-3 mb-sm-0">
+                <img class="card-img-top" th:src="${shoe1.imageUrl}"
                     alt="Card image cap">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Shoe</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Details</a>
+                        <h5 class="card-title" th:text="${shoe1.name}">Shoe</h5>
+                        <a th:href="@{/shoe/details/{shoeId}(shoeId = ${shoe1.id})}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <img class="card-img-top" src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+            <div class="col-sm-6" th:object="${shoe2}">
+                <img class="card-img-top" th:src="${shoe2.imageUrl}"
                     alt="Card image cap">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Shoe</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Details</a>
+                        <h5 class="card-title" th:text="${shoe2.name}">Shoe</h5>
+                        <a th:href="@{/shoe/details/{shoeId}(shoeId = ${shoe2.id})}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>
@@ -88,42 +86,35 @@
 
         <div class="row mx-5 mt-5">
             <div class="col mx-5">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                <div class="card" style="width: 18rem;" th:object="${brand1}">
+                    <img class="card-img-top" th:src="${brand1.imageUrl}"
                         alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Brand</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Details</a>
+                        <h5 class="card-title" th:text="${brand1.name}">Brand</h5>
+                        <a th:href="@{/brand/details/{brandId}(brandId = ${brand1.id})}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>
 
             <div class="col mx-5">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                <div class="card" style="width: 18rem;" th:object="${brand2}">
+                    <img class="card-img-top" th:src="${brand2.imageUrl}"
                         alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Brand</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Details</a>
+                        <h5 class="card-title" th:text="${brand2.name}">Brand</h5>
+                        <a th:href="@{/brand/details/{brandId}(brandId = ${brand2.id})}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>
 
             <div class="col mx-4">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                        alt="Card image cap">
+                <div class="card" style="width: 18rem;" th:object="${brand3}">
+                    <img class="card-img-top" th:src="${brand3.imageUrl}"
+                         alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Brand</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Details</a>
+                        <h5 class="card-title" th:text="${brand3.name}">Brand</h5>
+                        <a th:href="@{/brand/details/{brandId}(brandId = ${brand3.id})}" class="btn btn-primary">Details</a>
                     </div>
-                </div>
             </div>
 
         </div>

@@ -27,5 +27,10 @@ public class Comment {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String text;
 
+    @ManyToOne
+    private UserEntity author;
+
+    @ManyToOne
+    private Offer offer;
 
 }

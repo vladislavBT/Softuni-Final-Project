@@ -49,7 +49,7 @@ public class UserEntity {
     @Column(nullable = false)
     private Gender gender;
 
-    @OneToMany
+    @OneToMany(targetEntity = Comment.class, mappedBy = "author",fetch = FetchType.EAGER)
     private List<Comment> comments = new ArrayList<>();
 
     @OneToMany(targetEntity = Offer.class, mappedBy = "seller",fetch = FetchType.EAGER)

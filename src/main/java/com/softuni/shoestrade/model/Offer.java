@@ -51,7 +51,7 @@ public class Offer {
 
     @ManyToOne
     private UserEntity seller;
-    @OneToMany
+    @OneToMany(targetEntity = Comment.class, mappedBy = "offer",fetch = FetchType.EAGER)
     private List<Comment> comments;
 
     public Offer(String title, Gender gender, double size, Shoe shoe, double price, String description) {

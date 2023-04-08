@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
 
-
+                                <input type="hidden" name="offerId" id="offerId" th:value="${offer.id}">
                             </div>
                         </div>
                         <div class="row">
@@ -117,45 +117,41 @@
 
                             <div class="card mt-4">
                                 <div class="card-body">
+                                    <form id="commentForm" method="POST"
+                                          action="/">
                                     <div class="row d-flex justify-content-center">
                                         <div class="col-sm-3">
-                                            <p class="mb-0">Comments</p>
+                                            <p class="mb-0">Write Comments:</p>
                                         </div>
 
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-3">
-                                            <h4 class="mb-2">Author</h4>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-3">
-                                                messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddeddddddddddddddddddddddddd
-                                            </p>
-
+                                            <label class="form-label" for="message">Comment</label>
+                                            <textarea class="form-control" rows="4" name="message"
+                                                      id="message"></textarea>
                                         </div>
-
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <p class="text-muted mb-0">2023-04-04 10:58</p>
-                                        </div>
-                                        <button type="button"
-                                            class="btn btn-outline-danger ms-1 d-flex justify-content-center"
-                                            style="width: 30%;">Delete</button>
+                                    <div class="row my-2">
+                                        <input type="submit"
+                                            class="btn btn-outline-primary me-2 ms-1 d-flex justify-content-center"
+                                            style="width: 30%;" value="Post">
                                     </div>
+                                    </form>
                                     <hr>
-
-
                                 </div>
                             </div>
                         </div>
+
+                        <div id="commentCtnr">
+
+                        </div>
+
                     </div>
                 </div>
+                <script th:src="@{/js/comments.js}"></script>
 
         </section>
         <footer th:replace="fragments/footer"></footer>
