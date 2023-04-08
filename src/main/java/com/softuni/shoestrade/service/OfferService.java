@@ -4,8 +4,12 @@ import com.softuni.shoestrade.model.Offer;
 import com.softuni.shoestrade.model.Shoe;
 import com.softuni.shoestrade.model.UserEntity;
 import com.softuni.shoestrade.model.dto.OfferCreateDTO;
+import com.softuni.shoestrade.model.view.OfferView;
+import com.softuni.shoestrade.model.view.ShoeView;
 import com.softuni.shoestrade.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,5 +49,20 @@ public class OfferService {
         offer.setImageUrl(imageUrl);
 
         this.offerRepository.save(offer);
+    }
+
+    public Offer getOfferById(long offerId) {
+        return this.offerRepository.findOfferById(offerId);
+    }
+
+    public Page<OfferView> getAllOffersForPages(Pageable pageable) {
+        return offerRepository.
+                findAll(pageable).
+                map(this::map);
+    }
+
+    private OfferView map(Offer offer) {
+        return new OfferView(offer.getId(), offer.getTitle(), offer.getPrice(), offer.getImageUrl());
+
     }
 }

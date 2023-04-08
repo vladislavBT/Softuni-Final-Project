@@ -148,12 +148,17 @@
                                     <p th:text = "${offer.price}" class="text-muted mb-0">150</p>
                                     <p class="text-muted mb-0">$</p>
                                 </div>
-                                <div class="col-sm">
-                                    <a th:href="@{/offer/details/{offerId}(offerId = *{offerId})}" class="text-primary mb-0 text-decoration-none ">details</a>
+                                <div class="col-sm" >
+                                    <a th:href="@{/offer/details/{offerId}(offerId = ${offer.id})}" type="submit" class="text-primary mb-0 text-decoration-none ">details</a>
+
                                 </div>
                                 <div class="col-sm">
+                                    <form th:action="@{/offer/details/{offerId}(offerId = ${offer.id})}"
+                                            th:method="delete">
 <!--                                    add form delete and giving the id-->
                                     <button type="submit" class="btn btn-outline-danger ms-1">Delete</button>
+                                    </form>
+
                                 </div>
 
                             </div>

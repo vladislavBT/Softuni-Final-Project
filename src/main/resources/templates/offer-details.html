@@ -22,15 +22,14 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" th:object="${seller}">
                         <div class="card mb-4">
                             <div  class="card-body text-center">
                                 <p class="h1 mb-4 d-flex justify-content-center">Seller</p>
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                                     alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                                <h5 class="my-3">John Smith</h5>
-                                <p class="text-muted mb-1">Full Stack Developer</p>
-                                <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                                <h5 class="my-3" th:text="${seller.fullName}">John Smith</h5>
+                                <p class="text-muted mb-4" th:text="${seller.description}">Full Stack Developer</p>
                                 <div class="d-flex justify-content-center mb-2">
 
                                 </div>
@@ -39,13 +38,13 @@
                         <div class="card mb-4 mb-lg-0">
                             <div class="card-body p-0">
                                 <ul class="list-group list-group-flush rounded-3">
-                                    <li class="list-group-item d-flex justify-content-center align-items-center p-3">
-                                        <a class="mb-0 text-decoration-none userEntity-select-none">Brand details</a>
+                                    <li th:object="${brand}" class="list-group-item d-flex justify-content-center align-items-center p-3">
+                                        <a th:href="@{/brand/details/{brandId}(brandId = ${brand.id})}" class="mb-0 text-decoration-none userEntity-select-none">Brand details</a>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-center align-items-center p-3">
-                                        <a href="#" class="mb-0 text-decoration-none userEntity-select-none">Shoe details</a>
+                                    <li th:object="${shoe}" class="list-group-item d-flex justify-content-center align-items-center p-3">
+                                        <a th:href="@{/shoe/details/{shoeId}(shoeId = ${shoe.id})}" class="mb-0 text-decoration-none userEntity-select-none">Shoe details</a>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-center align-items-center p-3">
+                                    <li th:if="${!sameUser}" class="list-group-item d-flex justify-content-center align-items-center p-3">
                                         <button type="button" class="btn btn-primary">Buy offer</button>
                                     </li>
                                 </ul>
@@ -54,13 +53,13 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="card mb-4">
-                            <div class="card-body">
+                            <div class="card-body" th:object="${offer}">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Title</p>
+                                        <p class="mb-0" >Title</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">Johnatan Smith</p>
+                                        <p class="text-muted mb-0" th:text = "${offer.title}">Johnatan Smith</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -69,7 +68,7 @@
                                         <p class="mb-0">Description</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">example@example.com</p>
+                                        <p class="text-muted mb-0" th:text = "${offer.description}">example@example.com</p>
                                     </div>
                                 </div>
 
@@ -78,8 +77,9 @@
                                     <div class="col-sm-3">
                                         <p class="mb-0">Price</p>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0">(098) 765-4321</p>
+                                    <div class="col-sm-9 d-flex">
+                                        <p class="text-muted mb-0" th:text = "${offer.price}">(098) 765-4321</p>
+                                        <p class="text-muted mb-0">$</p>
                                     </div>
                                 </div>
 
@@ -89,10 +89,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card mb-4 mb-md-0">
-                                    <div class="card-body">
-                                        <p class="mb-4"><span class="font-italic me-1">Offer image</span></p>
+                                    <div class="card-body" th:object="${shoe}">
+                                        <p class="mb-4"><span class="font-italic me-1">Shoe details</span></p>
 
-                                        <a href="#"><img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        <a  th:href="@{/shoe/details/{shoeId}(shoeId = ${shoe.id})}"><img th:src="${shoe.imageUrl}"
                                                 style="height: 250px; width: 320px;" class="rounded mx-auto d-block"
                                                 alt="..."></a>
 
@@ -103,10 +103,10 @@
                                 <div class="card mb-4 mb-md-0">
 
                                     <div class="card-body">
-                                        <div class="container-fade">
-                                            <p class="mb-4"><span class="font-italic me-1">Shoe details</span></p>
-                                            <a href="#"><img
-                                                    src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                        <div class="container-fade" th:object ="${offer}">
+                                            <p class="mb-4"><span class="font-italic me-1">Offer image</span></p>
+                                            <a><img
+                                                    th:src="${offer.imageUrl}"
                                                     style="height: 250px; width: 320px;"
                                                     class="rounded mx-auto d-block image-fade" alt="..."></a>
                                         </div>

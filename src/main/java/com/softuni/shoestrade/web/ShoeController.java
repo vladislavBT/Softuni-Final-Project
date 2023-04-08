@@ -1,20 +1,21 @@
 package com.softuni.shoestrade.web;
 
 import com.softuni.shoestrade.model.Brand;
+import com.softuni.shoestrade.model.Shoe;
 import com.softuni.shoestrade.model.dto.ShoeCreateDTO;
 import com.softuni.shoestrade.service.BrandService;
 import com.softuni.shoestrade.service.ShoeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,13 +43,40 @@ public class ShoeController extends BaseController{
     }
 
     @GetMapping("/all")
-    public ModelAndView getShoes() {
-        return super.view("all-original-shoes.html");
+    public ModelAndView getAllShoes(ModelAndView modelAndView, @PageableDefault(
+            sort = "id",
+            size = 3
+    ) Pageable pageable) {
+
+        var shoes = this.shoeService.getAllShoesForPages(pageable);
+
+        modelAndView.addObject("shoes", shoes);
+
+        List<Integer> pagesNumber = new ArrayList<>();
+
+        for (int i = 0; i < shoes.getTotalPages(); i++) {
+            pagesNumber.add(i);
+        }
+
+        modelAndView.addObject("pagesNumber", pagesNumber);
+
+        modelAndView.setViewName("all-original-shoes.html");
+
+        return modelAndView;
     }
 
-    @GetMapping("/details")
-    public ModelAndView getDetails() {
-        return super.view("brand-details.html");
+    @GetMapping("/details/{id}")
+    public ModelAndView getDetails(@PathVariable(name = "id") long shoeId, ModelAndView modelAndView) {
+        Optional<Shoe> shoeOptional = this.shoeService.getShoeById(shoeId);
+
+        Shoe shoe = shoeOptional.get();
+        Brand brand = shoe.getBrand();
+
+        modelAndView.addObject("brand", brand);
+        modelAndView.addObject("shoe",shoe);
+
+        modelAndView.setViewName("shoe-details.html");
+        return modelAndView;
     }
 
     @PostMapping("/add")

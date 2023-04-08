@@ -12,200 +12,55 @@
         <div style="background-color: #eee;">
             <div class="d-flex align-content-between flex-wrap">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-                            <div class="card">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
-                                    alt="Skyscrapers" />
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
 
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-                            <div class="card">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
-                                    alt="Skyscrapers" />
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-                            <div class="card">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
-                                    alt="Skyscrapers" />
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
+                    <div class="col" th:each="shoe: ${shoes.getContent()}"
+                         th:object="${shoe}">
+                        <a th:href="@{/shoe/details/{shoeId}(shoeId = ${shoe.id})}" class="text-decoration-none">
 
                             <div class="card">
                                 <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
+                                    <img th:src="*{imageUrl}"
+                                         class="card-img-top" alt="Skyscrapers" />
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
+                            <div class="d-flex align-items-center d-flex justify-content-center mt-1">
+                                <p th:text="*{name}" class="text-muted text-decoration-none">nike air force</p>
                             </div>
                         </a>
                     </div>
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-
-                            <div class="card">
-                                <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-
-                            <div class="card">
-                                <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-
-                            <div class="card">
-                                <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-
-                            <div class="card">
-                                <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-
-                            <div class="card">
-                                <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-
-                            <div class="card">
-                                <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="https://where-you-want-to-redirect" class="text-decoration-none">
-
-                            <div class="card">
-                                <div class="bg-image hover-zoom">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                                        class="card-img-top" alt="Skyscrapers" />
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center d-flex justify-content-between">
-                                <p class="text-dark text-decoration-none">nike air force</p>
-                                <p class="text-dark text-decoration-none">150 BGN</p>
-                            </div>
-                        </a>
-                    </div>
-
-
 
                 </div>
             </div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="row mx-auto d-flex flex-row justify-content-center">
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination">
+                        <!--                    <li class="page-item">-->
+                        <!--                        <a th:if="${brands.isFirst()}" class="page-link" href="#" aria-label="Previous">-->
+                        <!--                            <span aria-hidden="true">&laquo;</span>-->
+                        <!--                            <span class="sr-only">Previous</span>-->
+                        <!--                        </a>-->
 
+                        <!--                        <a th:unless="${brands.isFirst()}"  class="page-link" aria-label="Previous">-->
+                        <!--                            <span aria-hidden="true">&laquo;</span>-->
+                        <!--                            <span class="sr-only">Previous</span>-->
+                        <!--                        </a>-->
+                        <!--                    </li>-->
+                        <li th:each="pageNumber: ${pagesNumber}"
+                            th:object="${pageNumber}" class="page-item">
+                            <a th:href="@{/shoe/all(size=${shoes.getSize()}, page=${pageNumber})}" class="page-link" th:text="${pageNumber}+1" ></a>
+
+                        </li>
+                        <!--                    <li class="page-item"><a th:href="@{/brand/all(size=${brands.getSize()}, page=${1})}" class="page-link" href="#">2</a></li>-->
+                        <!--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                        <!--                    <li class="page-item">-->
+                        <!--                        <a class="page-link" href="#" aria-label="Next">-->
+                        <!--                            <span aria-hidden="true">&raquo;</span>-->
+                        <!--                            <span class="sr-only">Next</span>-->
+                        <!--                        </a>-->
+                        <!--                    </li>-->
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 

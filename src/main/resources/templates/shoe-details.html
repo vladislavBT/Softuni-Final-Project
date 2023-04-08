@@ -9,7 +9,7 @@
         <header th:replace="fragments/header"></header>
 
         <section style="background-color: #eee;">
-            <div class="container py-5">
+            <div class="container py-5" th:object="${shoe}">
                 <div class="row">
                     <div class="col">
 
@@ -30,7 +30,7 @@
                         <div class="card-body">
                             <p class="mb-1"><span class="font-italic me-1">Shoe image</span></p>
 
-                            <a href="#"><img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                            <a><img th:src="${shoe.imageUrl}"
                                     style="height: 250px; width: 320px;" class="rounded mx-auto d-block mb-3"
                                     alt="..."></a>
 
@@ -47,29 +47,29 @@
                             <p class="mb-0">Name</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">Air-force</p>
+                            <p th:text="${shoe.name}" class="text-muted mb-0">Air-force</p>
                         </div>
                     </div>
 
                     <hr>
-                    <div class="row">
+                    <div class="row" th:object="${brand}">
                         <div class="col-sm-3">
                             <p class="mb-0">Brand</p>
                         </div>
                         <div class="col">
-                            <p class="text-muted mb-0">Nike</p>
+                            <p th:text="${brand.name}" class="text-muted mb-0">Nike</p>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-outline-primary me-2">Details</button>
+                            <a th:href="@{/brand/details/{brandId}(brandId = ${brand.id})}" type="button" class="btn btn-outline-primary me-2">Details</a>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Category</p>
+                            <p  class="mb-0">Category</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">Sport</p>
+                            <p th:text="${shoe.category}" class="text-muted mb-0">Sport</p>
                         </div>
                     </div>
 
@@ -79,7 +79,7 @@
                             <p class="mb-0">Fabric</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">Nylon</p>
+                            <p th:text="${shoe.fabric}" class="text-muted mb-0">Nylon</p>
                         </div>
                     </div>
 

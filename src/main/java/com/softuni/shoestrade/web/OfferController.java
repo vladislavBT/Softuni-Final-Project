@@ -1,21 +1,25 @@
 package com.softuni.shoestrade.web;
 
+import com.softuni.shoestrade.model.Brand;
+import com.softuni.shoestrade.model.Offer;
 import com.softuni.shoestrade.model.Shoe;
+import com.softuni.shoestrade.model.UserEntity;
 import com.softuni.shoestrade.model.dto.OfferCreateDTO;
 import com.softuni.shoestrade.service.OfferService;
 import com.softuni.shoestrade.service.ShoeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -42,13 +46,53 @@ public class OfferController extends BaseController{
     }
 
     @GetMapping("/store")
-    public ModelAndView getStore() {
-        return super.view("store.html");
+    public ModelAndView getAllOffers(ModelAndView modelAndView, @PageableDefault(
+            sort = "id",
+            size = 3
+    ) Pageable pageable) {
+
+        var offers = this.offerService.getAllOffersForPages(pageable);
+
+        modelAndView.addObject("offers", offers);
+
+        List<Integer> pagesNumber = new ArrayList<>();
+
+        for (int i = 0; i < offers.getTotalPages(); i++) {
+            pagesNumber.add(i);
+        }
+
+        modelAndView.addObject("pagesNumber", pagesNumber);
+
+        modelAndView.setViewName("store.html");
+
+        return modelAndView;
     }
 
-    @GetMapping("/details")
-    public ModelAndView getDetails() {
-        return super.view("offer-details.html");
+    @GetMapping("/details/{id}")
+    public ModelAndView getDetails(@PathVariable(name = "id") long offerId, ModelAndView modelAndView,Principal principal) {
+
+
+
+        Offer offer = offerService.getOfferById(offerId);
+        UserEntity seller = offer.getSeller();
+        Shoe shoe = offer.getShoe();
+        Brand brand = shoe.getBrand();
+
+        boolean sameUser =false;
+        if(principal.getName().equals(seller.getUsername())){
+            sameUser=true;
+        }
+
+        modelAndView.addObject("offer", offer);
+        modelAndView.addObject("seller", seller);
+        modelAndView.addObject("shoe", shoe);
+        modelAndView.addObject("brand", brand);
+
+        modelAndView.addObject("sameUser", sameUser);
+
+        modelAndView.setViewName("offer-details.html");
+
+        return modelAndView;
     }
 
     @PostMapping("/add")
@@ -71,6 +115,9 @@ public class OfferController extends BaseController{
 
         return "redirect:/";
     }
+
+
+
 
     @ModelAttribute("offerCreateDTO")
     public OfferCreateDTO initForm() {

@@ -1,18 +1,23 @@
 package com.softuni.shoestrade.web;
 
+import com.softuni.shoestrade.model.Brand;
 import com.softuni.shoestrade.model.dto.BrandCreateDTO;
 import com.softuni.shoestrade.model.dto.UserRegistrationDTO;
 import com.softuni.shoestrade.service.BrandService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/brand")
@@ -32,13 +37,35 @@ public class BrandController extends BaseController{
     }
 
     @GetMapping("/all")
-    public ModelAndView getStore() {
-        return super.view("all-brands.html");
+    public ModelAndView getAllBrands(ModelAndView modelAndView, @PageableDefault(
+            sort = "id",
+            size = 2
+    ) Pageable pageable) {
+
+        var brands = this.brandService.getAllBrandsForPages(pageable);
+
+        modelAndView.addObject("brands", brands);
+
+        List<Integer> pagesNumber = new ArrayList<>();
+        for (int i = 0; i < brands.getTotalPages(); i++) {
+            pagesNumber.add(i);
+        }
+
+        modelAndView.addObject("pagesNumber", pagesNumber);
+
+        modelAndView.setViewName("all-brands.html");
+
+        return modelAndView;
     }
 
-    @GetMapping("/details")
-    public ModelAndView getDetails() {
-        return super.view("brand-details.html");
+    @GetMapping("/details/{id}")
+    public ModelAndView getDetails(@PathVariable(name = "id") long brandId, ModelAndView modelAndView) {
+        Brand brand = brandService.getBrandById(brandId);
+
+        modelAndView.addObject("brand", brand);
+        modelAndView.setViewName("brand-details.html");
+
+        return modelAndView;
     }
 
     @PostMapping("/add")

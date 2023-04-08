@@ -2,8 +2,11 @@ package com.softuni.shoestrade.service;
 
 import com.softuni.shoestrade.model.Brand;
 import com.softuni.shoestrade.model.dto.BrandCreateDTO;
+import com.softuni.shoestrade.model.view.BrandView;
 import com.softuni.shoestrade.repository.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,5 +40,16 @@ public class BrandService {
 
     public Brand getBrandById(long brandId) {
         return this.brandRepository.findBrandById(brandId);
+    }
+
+    public Page<BrandView> getAllBrandsForPages(Pageable pageable) {
+        return brandRepository.
+                findAll(pageable).
+                map(this::map);
+    }
+
+    private BrandView map(Brand brand) {
+        return new BrandView(brand.getId(), brand.getName(), brand.getDescription(), brand.getImageUrl());
+
     }
 }
