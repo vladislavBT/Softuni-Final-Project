@@ -50,7 +50,6 @@ public class UserService {
                 userRegistrationDTO.getAge(),
                 userRegistrationDTO.getDescription(),
                 userRegistrationDTO.getGender()
-
         );
 
         Role role = roleRepository.findRoleByName(UserRoles.USER);
@@ -61,5 +60,9 @@ public class UserService {
 
     public Optional<UserEntity> getUserByName(String name) {
         return this.userRepository.findByUsername(name);
+    }
+
+    public void updateUser(UserEntity user) {
+        this.userRepository.saveAndFlush(user);
     }
 }

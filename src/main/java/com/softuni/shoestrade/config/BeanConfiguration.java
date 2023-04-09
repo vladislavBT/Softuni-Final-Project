@@ -18,6 +18,11 @@ import org.springframework.security.web.context.DelegatingSecurityContextReposit
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+import org.thymeleaf.TemplateEngine;
+
+import java.util.Properties;
 
 
 @Configuration
@@ -82,4 +87,8 @@ public class BeanConfiguration {
     }
 
 
+//    @Bean
+//    public TemplateEngine templateEngine(){
+//        return new TemplateEngine();
+//    }
 }

@@ -45,7 +45,7 @@
                                         <a th:href="@{/shoe/details/{shoeId}(shoeId = ${shoe.id})}" class="mb-0 text-decoration-none userEntity-select-none">Shoe details</a>
                                     </li>
                                     <li th:if="${!sameUser}" class="list-group-item d-flex justify-content-center align-items-center p-3">
-                                        <button type="button" class="btn btn-primary">Buy offer</button>
+                                        <a th:object="${offer}" type="button" class="btn btn-primary" th:href="@{/offer/buy/{offerId}(offerId = ${offer.id})}">Buy offer</a>
                                     </li>
                                 </ul>
                             </div>

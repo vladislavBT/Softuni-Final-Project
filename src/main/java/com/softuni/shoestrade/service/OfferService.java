@@ -34,7 +34,8 @@ public class OfferService {
         this.userService = userService;
     }
 
-    public void createOrder(OfferCreateDTO offerCreateDTO, Principal principal) {
+
+    public void createOffer(OfferCreateDTO offerCreateDTO, Principal principal) {
 
         Optional<Shoe> shoe = this.shoeService.getShoeById(offerCreateDTO.getShoeId());
 
@@ -64,5 +65,13 @@ public class OfferService {
     private OfferView map(Offer offer) {
         return new OfferView(offer.getId(), offer.getTitle(), offer.getPrice(), offer.getImageUrl());
 
+    }
+
+    public void updateOffer(Offer offer) {
+        this.offerRepository.saveAndFlush(offer);
+    }
+
+    public void deleteOffer(Offer offer) {
+        this.offerRepository.delete(offer);
     }
 }
